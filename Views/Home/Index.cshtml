@@ -1,8 +1,101 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Library Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+
+    <!-- HERO -->
+    <div class="text-center mb-5">
+        <h1>Library Management System</h1>
+        <p>
+            Manage books, members, and borrowing records efficiently.
+        </p>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-md-8">
+            <form asp-controller="Books" asp-action="Index" method="get" class="d-flex">
+                <input type="text"
+                       name="search"
+                       class="form-control me-2"
+                       placeholder="Search by title, author, or ISBN..." />
+                <button type="submit" class="btn btn-primary">
+                    Search
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- DASHBOARD STATS (STATIC FOR NOW) -->
+    <div class="dashboard-cards">
+
+        <div class="dashboard-card text-center">
+            <h3>Total Books</h3>
+            <span>0</span>
+            <p class="mt-2">No books added yet</p>
+        </div>
+
+        <div class="dashboard-card text-center">
+            <h3>Books Borrowed</h3>
+            <span>0</span>
+            <p class="mt-2">No active borrowings</p>
+        </div>
+
+        <div class="dashboard-card text-center">
+            <h3>Active Members</h3>
+            <span>0</span>
+            <p class="mt-2">No registered users</p>
+        </div>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="mt-5">
+        <div class="empty-state text-center">
+
+            <h2>Library Catalog</h2>
+            <p class="mt-2">
+                The library catalog is currently empty.
+            </p>
+
+            <p class="text-muted">
+                Start by adding books or registering members to begin using the system.
+            </p>
+
+            <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Books"
+                       asp-action="Create"
+                       class="btn btn-primary">
+                        Add New Book
+                    </a>
+
+                    <a asp-controller="Admin"
+                       asp-action="Dashboard"
+                       class="btn btn-outline-secondary">
+                        Admin Dashboard
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="btn btn-primary">
+                        Register as Member
+                    </a>
+
+                    <a asp-controller="Books"
+                       asp-action="Index"
+                       class="btn btn-outline-secondary">
+                        Browse Catalog
+                    </a>
+                }
+
+            </div>
+        </div>
+    </div>
+
 </div>

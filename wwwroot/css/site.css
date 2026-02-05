@@ -1,31 +1,229 @@
+﻿/* =====================================================
+   GLOBAL SETUP
+===================================================== */
 html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    font-size: 15px;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: #2c2c2c;
+    /* 📚 Library paper background */
+    background: linear-gradient( 180deg, #f6f4ef 0%, #ece8df 100% );
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* =====================================================
+   NAVBAR (ACADEMIC STYLE)
+===================================================== */
+.navbar {
+    background: #2f3e46 !important;
+    border-bottom: 3px solid #a68a64;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: #dcdcdc !important;
+    font-weight: 500;
+}
+
+    .nav-link:hover {
+        color: #ffffff !important;
+        text-decoration: underline;
+    }
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+.container,
+.container-fluid {
+    max-width: 1300px;
+}
+
+main > .container {
+    padding-top: 70px;
+}
+
+/* =====================================================
+   PAGE TITLE
+===================================================== */
+h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #1f2933;
+}
+
+    h1::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background: #a68a64;
+        margin: 14px auto 0;
+    }
+
+p {
+    color: #4b5563;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+/* =====================================================
+   📚 BOOK CATALOG GRID
+===================================================== */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 24px;
+    margin-top: 50px;
+}
+
+.book-card {
+    background: #ffffff;
+    border: 1px solid #d6d3c8;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+    .book-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 26px rgba(0,0,0,0.15);
+    }
+
+.book-cover {
+    width: 100%;
+    height: 220px;
+    border-radius: 4px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px;
+    border: 1px solid #cfcfcf;
+}
+
+.book-title {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1f2933;
+}
+
+.book-author {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* =====================================================
+   🧑‍💼 ADMIN DASHBOARD CARDS
+===================================================== */
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-top: 45px;
+}
+
+.dashboard-card {
+    background: #ffffff;
+    border-left: 6px solid #a68a64;
+    border-radius: 6px;
+    padding: 26px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+    .dashboard-card h3 {
+        font-size: 1.1rem;
+        color: #374151;
+    }
+
+    .dashboard-card span {
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: #2f3e46;
+    }
+
+/* =====================================================
+   TABLES (LIBRARY / ADMIN)
+===================================================== */
+.table {
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+    .table thead {
+        background: #2f3e46;
+    }
+
+    .table th {
+        color: #ffffff;
+        font-weight: 600;
+        border: none;
+    }
+
+    .table td {
+        border-color: #e5e7eb;
+    }
+
+/* =====================================================
+   FORMS
+===================================================== */
+.form-control,
+.form-select {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: #1f2933;
+    border-radius: 6px;
+}
+
+    .form-control::placeholder {
+        color: #9ca3af;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #a68a64;
+        box-shadow: 0 0 0 0.15rem rgba(166, 138, 100, 0.35);
+    }
+
+/* =====================================================
+   BUTTONS
+===================================================== */
+.btn-primary {
+    background: #2f3e46;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 9px 22px;
+}
+
+    .btn-primary:hover {
+        background: #354f52;
+    }
+
+/* =====================================================
+   FOOTER
+===================================================== */
+footer {
+    color: #6b7280;
+    text-align: center;
+    font-size: 0.85rem;
+}
+.empty-state {
+    background: #ffffff;
+    border: 1px dashed #c9c2b8;
+    border-radius: 8px;
+    padding: 45px;
+    max-width: 650px;
+    margin: 0 auto;
 }
